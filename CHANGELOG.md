@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.19.0](https://github.com/serverless83/streamvix/compare/v1.18.23...v1.19.0) (2026-07-04)
+
+
+### Features
+
+* workflow build Docker per fork con push su GHCR ([c5f1ebe](https://github.com/serverless83/streamvix/commit/c5f1ebe316babeed94801d45d6b2c24ac0151b4d))
+
+
+### Bug Fixes
+
+* animesaturn ([e3570f8](https://github.com/serverless83/streamvix/commit/e3570f83816faea60b000b5607b2623a36d19e8d))
+* domains update ([646829a](https://github.com/serverless83/streamvix/commit/646829a408bd9623de11912357ab502a7bb96b45))
+* domains update ([a11e01e](https://github.com/serverless83/streamvix/commit/a11e01ea21373f84ce51d200203f0efe1b8fe8b9))
+* domains update ([5fcb726](https://github.com/serverless83/streamvix/commit/5fcb7262c942604cc5ccd740b1191b973acaf869))
+* domains update ([5b6cd18](https://github.com/serverless83/streamvix/commit/5b6cd182137e7d61b78a712053921ec3e9953b91))
+* domains update ([3bf5013](https://github.com/serverless83/streamvix/commit/3bf50134b576ca3a9f2dc56c8806b5aa38ddc532))
+* domains update ([d6709fd](https://github.com/serverless83/streamvix/commit/d6709fd9c0ecb726051abb84531265582743f11e))
+* rimozione emoji da nomi categoria e normalizzazioni extra schedule remoto ([1907036](https://github.com/serverless83/streamvix/commit/1907036ded4030ca4a8467e07ed8a6a47aa73873))
+
 ## [1.18.23](https://github.com/qwertyuiop8899/streamvix/compare/v1.18.22...v1.18.23) (2026-06-26)
 
 

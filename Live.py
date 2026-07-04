@@ -101,6 +101,36 @@ BASE_CATEGORIES = {
     # NB: 'Soccer' non è incluso: verrà trattato come contenitore da cui estrarre solo le competizioni whitelisted
 }
 
+# Pattern per rimuovere le emoji dai nomi categoria (lo schedule remoto ora le include)
+EMOJI_PATTERN = re.compile(
+    '['
+    '\U0001F300-\U0001F9FF'  # Simboli, sport, emoji varie
+    '\U0001FA00-\U0001FA6F'  # Scacchi, pedine
+    '\U0001F600-\U0001F64F'  # Faccine
+    '\U0001F680-\U0001F6FF'  # Trasporto
+    '\U0001F1E0-\U0001F1FF'  # Bandiere
+    '\U0000FE00-\U0000FE0F'  # Varianti di colore
+    '\U0000200D'              # ZWJ per emoji composite
+    '\U0000231A-\U0000231B'  # Orologio
+    '\U000023E9-\U000023F3'  # Simboli
+    '\U000023F8-\U000023FA'
+    '\U000025AA-\U000025AB'
+    '\U000025B6'
+    '\U000025C0'
+    '\U000025FB-\U000025FE'
+    '\U00002600-\U000027BF'  # Simboli vari (inclusi palloni, mazze, racchette)
+    '\U00002934-\U00002935'
+    '\U00002B05-\U00002B07'
+    '\U00002B1B-\U00002B1C'
+    '\U00002B50'
+    '\U00002B55'
+    '\U00003030'
+    '\U0000303D'
+    '\U00003297'
+    '\U00003299'
+    ']+', flags=re.UNICODE
+)
+
 COPPA_LOGOS = {
     'UEFA Champions League': 'UEFA_Champions_League.png',
     'UEFA Europa League': 'UEFA_Europa_League.png',
@@ -660,6 +690,8 @@ def main():
         # Rimuove frammenti HTML come </span> e eventuali tag residui
         c = raw.replace('</span>', '')
         c = re.sub(r'<[^>]+>', '', c)
+        # Rimuove le emoji dai nomi categoria (lo schedule remoto ora le include)
+        c = EMOJI_PATTERN.sub('', c)
         c = c.strip()
         # Rimuove eventuale suffisso " :" finale
         c = re.sub(r"\s*:\s*$", '', c)
@@ -675,6 +707,13 @@ def main():
             c = 'Italy - Serie C'
         if c == 'Bundesliga':
             c = 'Germany - Bundesliga'
+        # Normalizzazioni extra per categorie con emoji / varianti
+        if c == 'All Soccer Events':
+            c = 'Soccer'
+        if c in ('NBA', 'WNBA'):
+            c = 'Basketball'
+        if c == 'Baseball (MLB)':
+            c = 'Baseball'
         return c
 
     debug_categories = {}
